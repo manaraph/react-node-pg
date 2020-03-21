@@ -14,8 +14,6 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   // res.status(200).send('Hello World!');
   dbModel.getMerchants().then( response => {
-    console.log(response);
-    
     res.status(200).send(response);
   }).catch(error => {
     res.status(500).send(error);

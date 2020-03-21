@@ -9,7 +9,7 @@ const pool = new Pool({
 
 const getMerchants = () => {
   return new Promise( (resolve, reject) => {
-    pool.query('SELECT * FROM merchant ORDER BY id ASC', (error, results) => {
+    pool.query('SELECT * FROM merchants ORDER BY id ASC', (error, results) => {
       if(error) {
         reject(error);
       }  
