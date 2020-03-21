@@ -1,0 +1,19 @@
+{
+  "name": "react-node-pg",
+  "version": "1.0.0",
+  "description": "Interacting with a postgres DB using react and node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manaraph/react-node-pg.git"
+  },
+  "author": "Manasseh Omachonu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manaraph/react-node-pg/issues"
+  },
+  "homepage": "https://github.com/manaraph/react-node-pg#readme"
+}
