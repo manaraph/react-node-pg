@@ -32,8 +32,12 @@ app.post('/merchants', (req, res) => {
 app.delete('/merchants/:id', (req, res) => {
   // res.status(200).send('Hello World!');
   dbModel.deleteMerchant(req.params.id).then( response => {
+    console.log(response);
+    
     res.status(200).send(response);
   }).catch(error => {
+    console.log(error);
+    
     res.status(500).send(error);
   })
 });

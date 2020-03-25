@@ -7,9 +7,11 @@ const App = () => {
   }, []);
 
   const getMerchant = () => {
-    fetch('https://localhost:3001').then(response => {
+    fetch('http://localhost:3001').then(response => {
       return response.text();
     }).then(data => {
+      console.log(data);
+      
       setMerchants(data);
     })
   }
@@ -34,7 +36,7 @@ const App = () => {
 
   const deleteMerchant = () => {
     let id = prompt('Enter merchant id');
-    fetch(`https://localhost:3001/merchants/${id}`, {
+    fetch(`http://localhost:3001/merchants/${id}`, {
       method: 'DELETE',
     }).then( response => {
       return response.text();
