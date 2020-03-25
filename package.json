@@ -4,6 +4,10 @@
   "description": "Interacting with a postgres DB using react and node",
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all --parallel watch:server start:web",
+    "start:web": "react-scripts start",
+    "start:server": "node src/server",
+    "watch:server": "nodemon --watch src/server src/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
