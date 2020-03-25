@@ -31,9 +31,9 @@ const createMerchant = (body) => {
   });
 };
 
-const deleteMerchant = () => {
+const deleteMerchant = (merchantId) => {
   return new Promise((resolve, reject) => {
-    const id = parseInt(request.params.id);
+    const id = parseInt(merchantId);
     pool.query('DELETE FROM merchants WHERE id = $1', [id], (error, results) => {
       if(error) {
         reject(error);

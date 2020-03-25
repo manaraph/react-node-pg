@@ -8,10 +8,8 @@ const App = () => {
 
   const getMerchant = () => {
     fetch('http://localhost:3001').then(response => {
-      return response.text();
-    }).then(data => {
-      console.log(data);
-      
+      return response.json();
+    }).then(data => {      
       setMerchants(data);
     })
   }
@@ -20,7 +18,7 @@ const App = () => {
     let name = prompt('Enter merchant name');
     let email = prompt('Enter merchant email');
 
-    fetch('htpp://localhost:3001/merchants', {
+    fetch('http://localhost:3001/merchants', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,16 +37,38 @@ const App = () => {
     fetch(`http://localhost:3001/merchants/${id}`, {
       method: 'DELETE',
     }).then( response => {
-      return response.text();
+      return response.json();
     }).then( data => {
       alert(data);
       getMerchant();
     })
   }
+  const displayMerchants = (merchants) => (
+   <table>
+      <thead>
+        <tr>
+          <th>Merchant ID</th>
+          <th>Email</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+      { 
+        merchants.length > 0 && merchants.map(merchant => (      
+          <tr key={merchant.id}>
+            <td>{merchant.id}</td>
+            <td>{merchant.email}</td>
+            <td>{merchant.name}</td>
+          </tr>
+        ))
+      }
+      </tbody>
+    </table>
+  );
 
   return (
     <div>
-      { merchants ? merchants : 'There is no merchant data available'}
+      { merchants ? displayMerchants(merchants) : 'There is no merchant data available'}
       <br />
       <button onClick={createMerchant}>Add Merchant</button>
       <br />
