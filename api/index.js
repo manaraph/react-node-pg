@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 // const dbModel = require('./model');
 const merchantRouter = require('./routes/merchants');
-
 const app = express();
-const port = 3001;
+const port = process.env.APIPORT || 3001;
 
 app.use(express.json());
 app.use((req, res, next) => {
