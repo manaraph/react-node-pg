@@ -7,7 +7,7 @@ const App = () => {
   }, []);
 
   const getMerchant = () => {
-    fetch('http://localhost:3001').then(response => {
+    fetch('http://localhost:3001/api/v1/merchants').then(response => {
       return response.json();
     }).then(data => {      
       setMerchants(data);
@@ -18,7 +18,7 @@ const App = () => {
     let name = prompt('Enter merchant name');
     let email = prompt('Enter merchant email');
 
-    fetch('http://localhost:3001/merchants', {
+    fetch('http://localhost:3001/api/v1/merchants', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const App = () => {
 
   const deleteMerchant = () => {
     let id = prompt('Enter merchant id');
-    fetch(`http://localhost:3001/merchants/${id}`, {
+    fetch(`http://localhost:3001/api/v1/merchants/${id}`, {
       method: 'DELETE',
     }).then( response => {
       return response.json();

@@ -18,7 +18,6 @@ const createMerchant = (body) => {
       if(error) {
         reject(error);
       }
-      console.log(results.rows[0]);
       resolve(`A new merchant has been added: ${results.rows[0]}`);
     });
   });
