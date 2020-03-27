@@ -37,7 +37,7 @@ const App = () => {
     fetch(`http://localhost:3001/api/v1/merchants/${id}`, {
       method: 'DELETE',
     }).then( response => {
-      return response.json();
+      return response.text();
     }).then( data => {
       alert(data);
       getMerchant();
