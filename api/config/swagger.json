@@ -1,0 +1,165 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "React Node posgress Application API",
+    "description": "An API to demonstrate interaction with posgres database using node and react",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:30001",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Merchants",
+      "description": "API for merchants in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/merchants": {
+      "post": {
+        "tags": [
+          "Merchants"
+        ],
+        "description": "Create new merchant in system",
+        "parameters": [
+          {
+            "name": "merchant",
+            "in": "body",
+            "description": "Merchant that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A new merchant has been added: 'merchant details'",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "summary": "Get all merchants in the system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        }
+      }
+    },
+    "/merchants/{merchantId}": {
+      "parameters": [
+        {
+          "name": "merchantId",
+          "in": "path",
+          "required": true,
+          "description": "ID of merchant that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Merchants"
+        ],
+        "summary": "Get merchant with given ID",
+        "responses": {
+          "200": {
+            "description": "Merchant is found",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete merchant with given ID",
+        "tags": [
+          "Merchants"
+        ],
+        "responses": {
+          "200": {
+            "description": "Merchant is deleted",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Merchant with give ID",
+        "tags": [
+          "Merchants"
+        ],
+        "parameters": [
+          {
+            "name": "merchant",
+            "in": "body",
+            "description": "Merchant with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Merchant is updated",
+            "schema": {
+              "$ref": "#/definitions/Merchants"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Merchant": {
+      "required": [
+        "email",
+        "id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        }
+      }
+    },
+    "Merchants": {
+      "type": "array",
+      "$ref": "#/definitions/Merchants"
+    }
+  }
+}
