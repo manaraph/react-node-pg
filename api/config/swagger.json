@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "localhost:30001",
+  "host": "localhost:3001",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -39,7 +39,7 @@
             "in": "body",
             "description": "Merchant that we want to create",
             "schema": {
-              "$ref": "#/definitions/Merchants"
+              "$ref": "#/definitions/Merchant"
             }
           }
         ],
@@ -50,7 +50,7 @@
           "200": {
             "description": "A new merchant has been added: 'merchant details'",
             "schema": {
-              "$ref": "#/definitions/Merchants"
+              "$ref": "#/definitions/Merchant"
             }
           }
         }
@@ -89,7 +89,7 @@
           "200": {
             "description": "Merchant is found",
             "schema": {
-              "$ref": "#/definitions/Merchants"
+              "$ref": "#/definitions/Merchant"
             }
           }
         }
@@ -103,7 +103,7 @@
           "200": {
             "description": "Merchant is deleted",
             "schema": {
-              "$ref": "#/definitions/Merchants"
+              "$ref": "#/definitions/Merchant"
             }
           }
         }
@@ -119,7 +119,7 @@
             "in": "body",
             "description": "Merchant with new values of properties",
             "schema": {
-              "$ref": "#/definitions/Merchants"
+              "$ref": "#/definitions/Merchant"
             }
           }
         ],
@@ -127,7 +127,7 @@
           "200": {
             "description": "Merchant is updated",
             "schema": {
-              "$ref": "#/definitions/Merchants"
+              "$ref": "#/definitions/Merchant"
             }
           }
         }
@@ -138,28 +138,25 @@
     "Merchant": {
       "required": [
         "email",
-        "id"
+        "name"
       ],
       "properties": {
-        "_id": {
-          "type": "string",
-          "uniqueItems": true
+        "merchantId": {
+          "type": "number"
         },
         "email": {
           "type": "string",
           "uniqueItems": true
         },
-        "lastName": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "uniqueItems": true
         }
       }
     },
     "Merchants": {
       "type": "array",
-      "$ref": "#/definitions/Merchants"
+      "$ref": "#/definitions/Merchant"
     }
   }
 }
